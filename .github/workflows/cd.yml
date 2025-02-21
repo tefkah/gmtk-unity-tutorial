@@ -45,7 +45,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: Build
-          path: build
+          path: schmuild
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -53,7 +53,7 @@ jobs:
       - name: Upload pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'build/WebGL/WebGL'
+          path: 'schmuild/WebGL/WebGL'
 
       - name: Deploy to GitHub Pages
         id: deployment
