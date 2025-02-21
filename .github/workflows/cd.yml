@@ -58,7 +58,7 @@ jobs:
         run: cp vercel.json schmuild/WebGL/WebGL/vercel.json
 
       - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --token=${{ secrets.VERCEL_TOKEN }} ./schmuild/WebGL/WebGL
+        run: vercel deploy --token=${{ secrets.VERCEL_TOKEN }} ./schmuild/WebGL/WebGL --yes
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
