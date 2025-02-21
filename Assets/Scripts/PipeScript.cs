@@ -10,16 +10,15 @@ public class PipeScript : MonoBehaviour
     public GameObject topPipe;
     public GameObject bottomPipe;
 
-    private void Start()
-    {
-    }
+    private void Start() { }
 
     // Update is called once per frame
     private void Update()
     {
         transform.Translate(Vector3.left * Time.deltaTime * moveSpeed);
 
-        if (transform.position.x < deadZone) Destroy(gameObject);
+        if (transform.position.x < deadZone)
+            Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

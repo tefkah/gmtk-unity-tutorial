@@ -7,29 +7,30 @@ public class BirdScript : MonoBehaviour
     public Rigidbody2D rb;
     public int jumpHeight = 15;
 
-    private bool dead;
-
-    private int score;
+    private bool isDead;
 
     private void Start()
     {
-        dead = false;
-        score = 0;
+        isDead = false;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (dead)
+        if (isDead)
             return;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (
+            Input.GetKeyDown(KeyCode.Space)
+            || Input.GetMouseButtonDown(0)
+            || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began
+        )
             rb.linearVelocity = Vector2.up * jumpHeight;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        dead = true;
+        isDead = true;
         onHit?.Invoke();
     }
 

@@ -10,21 +10,16 @@ public class GameManagerScript : MonoBehaviour
     public Button restartButton;
 
     private int score;
+    private bool isGameOver;
 
     private void Start()
     {
         PipeScript.onPlayerPassedPipe += AddScore;
         BirdScript.onHit += GameOver;
-
-        // why can't i use +- here???
-        restartButton.onClick.AddListener(Restart);
     }
-
 
     // Update is called once per frame
-    private void Update()
-    {
-    }
+    private void Update() { }
 
     private void AddScore()
     {
@@ -32,12 +27,19 @@ public class GameManagerScript : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
-    private void GameOver()
+    void GameOver()
     {
-        gameOverPanel?.SetActive(true);
+        if (isGameOver)
+            return;
+
+        if (gameOverPanel != null)
+        {
+            gameOverPanel?.SetActive(true);
+        }
+        isGameOver = true;
     }
 
-    private void Restart()
+    public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

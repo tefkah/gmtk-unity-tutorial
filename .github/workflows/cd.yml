@@ -51,6 +51,15 @@ jobs:
           name: Build
           path: schmuild
 
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: copy vercel.json to correct place
+        run: cp vercel.json schmuild/WebGL/WebGL/vercel.json
+
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
