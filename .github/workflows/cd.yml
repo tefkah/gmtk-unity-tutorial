@@ -4,6 +4,10 @@ on: [push, pull_request]
 
 jobs:
   build:
+    permissions:
+      id-token: write
+      pages: write
+
     name: Build my project ✨
     runs-on: ubuntu-latest
     steps:
