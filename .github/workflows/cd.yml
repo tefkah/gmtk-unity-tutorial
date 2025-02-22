@@ -61,6 +61,18 @@ jobs:
         with:
           targetPlatform: WebGL
 
+      - name: ls
+        run: ls -la build
+
+      - name: ls -la build/WebGL
+        run: ls -la build/WebGL
+
+      - name: ls -la build/WebGL/WebGL
+        run: ls -la build/WebGL/WebGL
+
+      - name: chmod
+        run: chmod -R 755 build
+
       # Output
       - uses: actions/upload-artifact@v4
         with:
