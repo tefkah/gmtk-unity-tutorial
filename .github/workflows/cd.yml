@@ -70,8 +70,8 @@ jobs:
       - name: ls -la build/WebGL/WebGL
         run: ls -la build/WebGL/WebGL
 
-      - name: chmod
-        run: chmod -R 755 build
+#      - name: chmod
+#        run: chmod -R 755 build
 
       # Output
       - uses: actions/upload-artifact@v4
@@ -82,8 +82,8 @@ jobs:
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
-      - name: copy vercel.json to correct place
-        run: cp vercel.json build/WebGL/WebGL/vercel.json
+#      - name: copy vercel.json to correct place
+#        run: cp vercel.json build/WebGL/WebGL/vercel.json
 
       - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --token=${{ secrets.VERCEL_TOKEN }} ./build/WebGL/WebGL --yes
+        run: vercel deploy --local-config vercel.json --token=${{ secrets.VERCEL_TOKEN }} ./build/WebGL/WebGL --yes
