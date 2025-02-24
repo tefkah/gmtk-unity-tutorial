@@ -6,7 +6,6 @@ on:
       - Assets/*
       - Packages/*
       - ProjectSettings/*
-      - schmuild/*
       - .github/workflows/cd.yml
       - vercel.json
     branches:
