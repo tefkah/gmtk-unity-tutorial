@@ -73,7 +73,7 @@ jobs:
         id: is-prod
         run: |
           if [ ${{ github.ref }} == 'refs/heads/main' ]; then
-            echo "--prod" >> $GITHUB_OUTPUT
+            echo " --prod" >> $GITHUB_OUTPUT
           fi
 
       - name: Deploy Project Artifacts to Vercel
