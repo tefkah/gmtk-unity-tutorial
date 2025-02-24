@@ -69,12 +69,10 @@ jobs:
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
-      - name: Determine if this is a production build
-        id: is-prod
-        run: |
-          if [ ${{ github.ref }} == 'refs/heads/main' ]; then
-            echo " --prod" >> $GITHUB_OUTPUT
-          fi
+      - name: Deploy Project Artifacts to Vercel production
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: vercel deploy --prod --local-config vercel.json --token=${{ secrets.VERCEL_TOKEN }} ./build/WebGL/WebGL --yes
 
       - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy ${{ steps.is-prod.outputs.is-prod }} --local-config vercel.json --token=${{ secrets.VERCEL_TOKEN }} ./build/WebGL/WebGL --yes
+        if: ${{ github.ref != 'refs/heads/main' }}
+        run: vercel deploy --local-config vercel.json --token=${{ secrets.VERCEL_TOKEN }} ./build/WebGL/WebGL --yes
